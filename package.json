@@ -1,7 +1,7 @@
 {
-  "name": "slicedpixel.com",
+  "name": "twitter-realtime-monitoring",
   "version": "1.0.0",
-  "description": "Main application for slicedpixel.com",
+  "description": "Twitter realtime monitoring",
   "main": "index.js",
   "scripts": {
     "build": "tsc --project ./",
