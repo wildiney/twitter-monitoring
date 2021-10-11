@@ -94,6 +94,7 @@ const excludedTerms: string[] = [
   '@chosopeitudo',
   '@INXXDRA',
   '@uchhshisui',
+  '@indra_samantha',
   'abby',
   'anime',
   'Ashura',
@@ -189,6 +190,7 @@ const research: Research[] = [
       'indra_fernandz',
       'indra_granados',
       'indra_rangel',
+      'indra_samantha',
       'Indra_sour',
       'indradlt',
       'indradeath_',
@@ -220,7 +222,7 @@ const research: Research[] = [
   }, {
     term: 'ESG -is:retweet',
     lang: 'lang:pt',
-    excludedTerms: [''],
+    excludedTerms: ['guerra'],
     excludedAccounts: ['']
   }
 ]
