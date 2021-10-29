@@ -2,6 +2,8 @@ import path from 'path'
 import needle from 'needle'
 import { Request, Response } from 'express'
 import { Socket } from 'socket.io'
+import { excludedTerms as excluded } from './excludedTerms'
+import { researchTerms } from './researchTerms'
 
 require('dotenv').config()
 const io = require('../socket')
@@ -90,151 +92,15 @@ const rulesURL: string = 'https://api.twitter.com/2/tweets/search/stream/rules'
 
 const streamURL: string = `https://api.twitter.com/2/tweets/search/stream?tweet.fields=${fields.join(',')}&expansions=${expansions.join(',')}&media.fields=${mediaFields.join(',')}&place.fields=${placeFields.join(',')}&user.fields=${userFields.join(',')}`
 
-const excludedTerms: string[] = [
-  '@chosopeitudo',
-  '@INXXDRA',
-  '@uchhshisui',
-  '@indra_samantha',
-  '@golden_indra',
-  '@indra_mulk',
-  '@indra_montoya',
-  '@indra_Iwnl',
-  'abby',
-  'anime',
-  'Ashura',
-  'ashura',
-  'armys',
-  'aztrikgaming',
-  'Bhalavan',
-  'colette',
-  'chackra',
-  'clã',
-  'deus',
-  'devi',
-  'deidades',
-  'Neji',
-  'Hyuga',
-  'encarnações',
-  'fortnite',
-  'jugador',
-  'lexa',
-  'itachi',
-  'indradlt',
-  'indra_fernandz',
-  'IndraSilva',
-  'Hagoromo',
-  'kaguya',
-  'luffy',
-  'madara',
-  'naruto',
-  'Naruto',
-  'netflix',
-  'Ninshu',
-  'ninjutsu',
-  'niylah',
-  'ninja',
-  'Nooyi',
-  'mccreary',
-  'octavia',
-  'putra',
-  'ramon',
-  'raven',
-  'rikudou',
-  'reencarnação',
-  'reencarnacción',
-  'sasuke',
-  'seiran',
-  'shikamaru',
-  'shippuden',
-  'siempree_indra',
-  'tagore',
-  'the100brasil',
-  'yachi',
-  'uchiha',
-  'Vritra',
-  'yoongi',
-  'yoga'
-]
+const excludedTerms: string[] = excluded
 interface Research {
   term: string,
   lang: string,
   excludedTerms: string[],
   excludedAccounts: string[]
 }
-const research: Research[] = [
-  {
-    term: 'Minsait',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  },
-  {
-    term: 'IndraCompany',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  },
-  {
-    term: 'indra -is:retweet',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: [
-      '',
-      '__indra09',
-      'bs_pedrin',
-      'ccoo_indra',
-      'chosopeitudo',
-      'CrimsonVoidYT',
-      'golden_indra',
-      'Indr4OP',
-      'indra__s99',
-      'indra_9717',
-      'indra_agusta',
-      'indra_alio',
-      'indra_fernandz',
-      'indra_granados',
-      'indra_Iwnl',
-      'indra_montoya',
-      'indra_mulk',
-      'indra_rangel',
-      'indra_samantha',
-      'Indra_sour',
-      'indradlt',
-      'indradeath_',
-      'IndraSilva',
-      'chifuyuboom',
-      'scaredycatx',
-      'siempree_indra',
-      'sunsetsaso',
-      'zorotsuki'
-    ]
-  }, {
-    term: 'Eduardo Almeida',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  }, {
-    term: 'Fabiana Rosa',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  }, {
-    term: 'Marcelo Bernardino',
-    lang: '',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  }, {
-    term: '(Itaú OR 3169) (caixa OR gerente OR atendente OR Cris OR Crisinha OR Cristiane) -is:retweet',
-    lang: 'lang:pt',
-    excludedTerms: [''],
-    excludedAccounts: ['']
-  }, {
-    term: 'ESG -is:retweet',
-    lang: 'lang:pt',
-    excludedTerms: ['guerra'],
-    excludedAccounts: ['']
-  }
-]
+const research: Research[] = researchTerms
+
 const getRules = async () => {
   console.log('getRules')
   const response = await needle('get', rulesURL, {
