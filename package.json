@@ -1,12 +1,13 @@
 {
-  "name": "twitter-realtime-monitoring",
+  "name": "twitter-monitoring",
   "version": "1.0.0",
-  "description": "Twitter realtime monitoring",
-  "main": "index.js",
+  "description": "Twitter monitoring for selected keywords",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc --project ./",
     "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules src/index.ts",
-    "start": "node server/index"
+    "start": "node build/index.js",
+    "start:prod": "node build/index.js"
   },
   "author": "Wildiney Di Masi <wildiney@gmail.com>",
   "license": "ISC",
