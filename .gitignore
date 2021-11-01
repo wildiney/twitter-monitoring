@@ -2,5 +2,5 @@
 node_modules
 dist
 build
-src/controllers/excludedTerms.ts
-src/controllers/researchTerms.ts
+src/config/excludedTerms.ts
+src/config/researchTerms.ts
