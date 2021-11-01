@@ -2,8 +2,8 @@ import path from 'path'
 import needle from 'needle'
 import { Request, Response } from 'express'
 import { Socket } from 'socket.io'
-import { excludedTerms as excluded } from './excludedTerms'
-import { researchTerms } from './researchTerms'
+import { excludedTerms as excluded } from '../config/excludedTerms'
+import { researchTerms } from '../config/researchTerms'
 
 require('dotenv').config()
 const io = require('../socket')
