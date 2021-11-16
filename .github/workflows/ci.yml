@@ -10,10 +10,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v1
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      # - name: Setup Node.js environment
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '14'
 
       # - name: Install npm devDependencies
       #   run: npm install
