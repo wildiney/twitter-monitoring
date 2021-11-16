@@ -4,7 +4,7 @@
   "description": "Twitter monitoring for selected keywords",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc --project ./ && cp ./src/public build/",
+    "build": "tsc --project ./ && cp -r ./src/public build/",
     "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules src/index.ts",
     "start": "node build/index.js",
     "start:prod": "node build/index.js"
