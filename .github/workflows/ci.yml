@@ -7,11 +7,10 @@ jobs:
     if: github.ref=='refs/heads/master'
     runs-on: [ubuntu-18.04]
     steps:
-      - uses: actions/checkout@v1
       - name: Push to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install
+          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install && npm run build
