@@ -7,12 +7,26 @@ jobs:
     if: github.ref=='refs/heads/master'
     runs-on: [ubuntu-18.04]
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v1
-      - name: Push to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install && npm run build
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with: node-version:'14.18.1'
+
+      - name: Install npm devDependencies
+        run: npm install
+
+      - name: Run build tasks
+        run: npm run build
+
+      # - name: Push to server
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SERVER_IP }}
+      #     username: ${{ secrets.SERVER_USERNAME }}
+      #     password: ${{ secrets.SERVER_PASSWORD }}
+      #     # script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install && npm run build
+
+      - name: Deploy with rsync
+        run: rsync -rav --delete build/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.PROJECT_PATH }}/build
