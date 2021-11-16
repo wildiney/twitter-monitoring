@@ -12,7 +12,7 @@ jobs:
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v1
-        with: node-version:'14.18.1'
+        with: node-version:'14.x'
 
       - name: Install npm devDependencies
         run: npm install
