@@ -15,19 +15,19 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install npm devDependencies
-        run: npm install
+      # - name: Install npm devDependencies
+      #   run: npm install
 
-      - name: Run build tasks
-        run: npm run build
+      # - name: Run build tasks
+      #   run: npm run build
 
-      # - name: Push to server
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.SERVER_IP }}
-      #     username: ${{ secrets.SERVER_USERNAME }}
-      #     password: ${{ secrets.SERVER_PASSWORD }}
-      #     # script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install && npm run build
+      - name: Push to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm install && npm run build
 
-      - name: Deploy with rsync
-        run: rsync -rav --delete build/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.PROJECT_PATH }}/build
+      # - name: Deploy with rsync
+      #   run: rsync -rav --delete build/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.PROJECT_PATH }}/build
