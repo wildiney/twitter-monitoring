@@ -66,7 +66,8 @@ socket.on('tweet', (tweet) => {
                         <p>${tweetData.location}</p>
                     </div>
                     <div>
-                        <img src="https://www.countryflags.io/${tweetData.lang}/flat/64.png" />
+                    
+                        <img src="https://flagcdn.com/64x48/${tweetData.lang}.png" srcset="https://flagcdn.com/128x96/${tweetData.lang}.png 2x, https://flagcdn.com/192x144/${tweetData.lang}.png 3x"  width="64" height="48" alt="${tweetData.lang}/>
                     </div>
                 </header>
                 ${image}
