@@ -67,7 +67,7 @@ socket.on('tweet', (tweet) => {
                     </div>
                     <div>
                     
-                        <img src="https://flagcdn.com/64x48/${tweetData.lang}.png" srcset="https://flagcdn.com/128x96/${tweetData.lang}.png 2x, https://flagcdn.com/192x144/${tweetData.lang}.png 3x"  width="64" height="48" alt="${tweetData.lang}/>
+                        <img src="https://flagcdn.com/64x48/${tweetData.lang}.png" srcset="https://flagcdn.com/128x96/${tweetData.lang}.png 2x, https://flagcdn.com/192x144/${tweetData.lang}.png 3x"  width="64" height="48" alt="${tweetData.lang}" />
                     </div>
                 </header>
                 ${image}
