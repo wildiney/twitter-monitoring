@@ -174,11 +174,9 @@ footer p {
   position: absolute;
   right: 0;
 }
-/* .tweet header div:last-child img {
-  /* object-fit: contain; */
-  /* width: 100%; */
-  
-} */
+.tweet header div:last-child img {
+  width: 48%;
+}
 .tweet header div:nth-child(1) img {
   border-radius: 50%;
   border: 1px solid #ccc;
