@@ -171,8 +171,8 @@ footer p {
 .tweet header div:last-child {
   /* width: 48px;
   text-align: center; */
-  position: absolute;
-  right: 0;
+  align-self: flex-start;
+  text-align: right;
 }
 .tweet header div:last-child img {
   width: 48%;
