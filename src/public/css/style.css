@@ -126,7 +126,7 @@ footer p {
 }
 .tweet {
   border-radius: 0.4rem;
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
